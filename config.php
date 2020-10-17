@@ -5,4 +5,5 @@
 $token = '';
 $connectroot = "https://api.telegram.org/bot{$token}/";
 $hookurl = 'https://这里修改为您的域名/telegramrobot/index.php';
+$username = '@你的机器人名称';
 ?>

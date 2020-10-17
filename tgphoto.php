@@ -1,0 +1,17 @@
+<?php
+if(!isset($msg) || $msg == '')
+{
+	die;
+}
+elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$username}")
+{
+	$dir = '../images/';
+	$list = @scandir($dir,0);
+	$rand = @rand(2,@count($list)-'1');
+	$file = $dir.$list[$rand];
+	$text = "https://xiwangly.top/images/{$file}";
+}
+$text = @rawurlencode($text);
+$url = "https://api.telegram.org/bot{$token}/sendphoto?chat_id={$chat_id}&photo={$text}";
+getHttps($url);
+?>
