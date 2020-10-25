@@ -8,6 +8,10 @@ $name = $update['message']['from']['username'];
 $msg = $update['message']['text'];
 @file_put_contents('msg.txt',$msg);
 //发送给用户
+if(!isset($msg) || $msg == '')
+{
+	die;
+}
 include './tgtext.php';
 include './tgphoto.php';
 include './tgdocument.php';

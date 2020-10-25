@@ -1,9 +1,5 @@
 <?php
-if(!isset($msg) || $msg == '')
-{
-	die;
-}
-elseif($msg == "/lolifile" || $msg == "/lolifile{$username}")
+if($msg == "/lolifile" || $msg == "/lolifile{$username}")
 {
 	$dir = '../images/';
 	$list = @scandir($dir,0);
@@ -11,7 +7,17 @@ elseif($msg == "/lolifile" || $msg == "/lolifile{$username}")
 	$file = $dir.$list[$rand];
 	$text = "https://xiwangly.top/images/{$file}";
 }
+elseif($msg == "/wj" || $msg == "/wj{$username}")
+{
+}
 $text = @rawurlencode($text);
 $url = "https://api.telegram.org/bot{$token}/senddocument?chat_id={$chat_id}&document={$text}";
-getHttps($url);
+if(strlen($url) <= $getdatamax)
+{
+	getHttps($url);
+}
+else
+{
+	post($url);
+}
 ?>
