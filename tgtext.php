@@ -58,6 +58,18 @@ elseif(preg_match('/m/i',"{$msg}"))
 	include_once './sqldic.php';
 	$text = $rows['a'];
 }
+elseif($msg == "/yiyan" || $msg == "/yiyan{$username}")
+{
+	$yiyanfilename = './yiyandata.dat';
+	if(!file_exists($yiyanfilename))
+	{
+		die;
+	}
+	$data = file_get_contents($yiyanfilename);
+	$data = explode(PHP_EOL,$data);
+	$text = $data[array_rand($data)];
+	$text = str_replace(array("\r","\n","\r\n"),'',$text);
+}
 $text = @rawurlencode($text);
 $url = "https://api.telegram.org/bot{$token}/sendmessage?chat_id={$chat_id}&text={$text}";
 if(strlen($url) <= $getdatamax)
