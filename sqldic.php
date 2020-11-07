@@ -11,7 +11,7 @@ if(!isset($q) || $q == '')
 }
 $a = $_GET["a"];
 //创建连接
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli($host, $sqlusername, $password, $dbname);
 //设置编码
 $sql = "DEFAULT CHARSET=utf8mb4";
 $conn->query($sql);
