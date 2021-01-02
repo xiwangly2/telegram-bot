@@ -1,6 +1,5 @@
 <?php
-if($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$username}")
-{
+if($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$username}"){
 	$dir = '../images/';
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
@@ -9,12 +8,10 @@ if($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg 
 }
 $text = @rawurlencode($text);
 $url = "https://api.telegram.org/bot{$token}/sendphoto?chat_id={$chat_id}&photo={$text}";
-if(strlen($url) <= $getdatamax)
-{
+if(strlen($url) <= $getdatamax){
 	getHttps($url);
 }
-else
-{
+else{
 	post($url);
 }
 ?>

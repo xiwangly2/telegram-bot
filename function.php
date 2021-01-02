@@ -1,6 +1,5 @@
 <?php
-function getHttps($url,$isoutput = 0)
-{
+function getHttps($url,$isoutput = 0){
 	//初始化
 	$ch = curl_init();
 	//设置选项，包括URL
@@ -25,8 +24,7 @@ function getHttps($url,$isoutput = 0)
 	curl_close($ch);
 return $output;
 }
-function post($url,$post_string = '')
-{
+function post($url,$post_string = ''){
 	$ch = curl_init();
 	curl_setopt($ch,CURLOPT_URL,$url);
 	curl_setopt($ch,CURLOPT_POSTFIELDS,'mypost='.$post_string);
@@ -36,8 +34,7 @@ function post($url,$post_string = '')
 	curl_close($ch);
 	return $data;
 }
-function uuid()
-{
+function uuid(){
 	$chars = md5(uniqid(mt_rand(),true));
 	$uuid = substr($chars,0,8).'-'.substr($chars,8,4).'-'.substr($chars,12,4).'-'.substr($chars,16,4).'-'.substr($chars,20,12);
 	return $uuid;

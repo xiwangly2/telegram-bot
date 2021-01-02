@@ -5,8 +5,7 @@
 include_once './config.php';
 //get参数
 $q = $_GET["q"];
-if(!isset($q) || $q == '')
-{
+if(!isset($q) || $q == ''){
 	$q = $msg;
 }
 $a = $_GET["a"];
@@ -20,15 +19,13 @@ $sql = "CREATE TABLE $tablename (id INT(64) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 $conn->query($sql);
 $sql = "SELECT id, q, a FROM $tablename";
 $conn->query($sql);
-if($a == "")
-{
+if($a == ""){
 	$sql = "SELECT * from $tablename WHERE q=\"{$q}\"";
 	$result = $conn->query($sql);
 	$rows = mysqli_fetch_array($result);
 	//echo $rows["a"];
 }
-else
-{
+else{
 	$sql = "DELETE FROM $tablename WHERE q=\"{$q}\"";
 	$conn->query($sql);
 	$sql = "INSERT INTO $tablename (q,a)VALUES (\"{$q}\",\"{$a}\")";
