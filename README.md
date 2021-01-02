@@ -7,7 +7,7 @@ xiwangly的telegram机器人程序:telegram-bot
 >重要，请勿泄露$token<br/>
 >$hookurl需要修改为自己的项目地址（网站必须使用https），修改完成后请访问"webhook.php"完成挂钩
 
-config.php为必改项
+config.php为必填项
 
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
