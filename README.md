@@ -10,4 +10,5 @@ xiwangly的telegram机器人程序:telegram-bot
 config.php为必改项
 
 参考：
+*[Bots: An introduction for developers](https://core.telegram.org/bots)
 *[Telegram Bot API](https://core.telegram.org/bots/api)
