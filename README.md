@@ -1,4 +1,4 @@
-# telegramrobot
+# telegram-bot
 xiwangly的telegram机器人程序:telegram-bot
 
 建议：下载后请把文件夹重命名为`telegrambot`或其他，不建议保留分支名称。如有安全需求，请把`config.php`放置在Web文档树之外，并且修改各脚本的相关文件引入
