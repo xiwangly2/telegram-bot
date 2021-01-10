@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： localhost
--- 生成日期： 2021-01-10 15:12:40
+-- 生成日期： 2021-01-10 16:35:57
 -- 服务器版本： 5.7.31-log
 -- PHP 版本： 7.3.11
 
@@ -28,19 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `dic` (
-  `id` int(64) UNSIGNED NOT NULL,
   `q` varchar(128) NOT NULL,
   `a` varchar(1280) NOT NULL,
-  `reg_date` timestamp NULL DEFAULT NULL
+  `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- 转存表中的数据 `dic`
 --
 
-INSERT INTO `dic` (`id`, `q`, `a`, `reg_date`) VALUES
-(1, '问题', '这是回答', '2020-08-14 17:27:36'),
-(2, '1', '2', '2020-10-24 23:43:26');
+INSERT INTO `dic` (`q`, `a`, `reg_date`) VALUES
+('1', '2', '2020-10-24 23:43:26'),
+('@xiwangly_bot', '找我有什么事呢', '2021-01-10 08:34:13'),
+('啊这', '啊这', '2021-01-10 08:34:40'),
+('问题', '这是回答', '2020-08-14 17:27:36');
 
 --
 -- 转储表的索引
@@ -50,17 +51,7 @@ INSERT INTO `dic` (`id`, `q`, `a`, `reg_date`) VALUES
 -- 表的索引 `dic`
 --
 ALTER TABLE `dic`
-  ADD PRIMARY KEY (`id`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `dic`
---
-ALTER TABLE `dic`
-  MODIFY `id` int(64) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  ADD PRIMARY KEY (`q`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,16 +4,16 @@
 */
 include_once './config.php';
 //get参数
-$q = $_GET["q"];
+$q = $_GET['q'];
 if(!isset($q) || $q == ''){
 	$q = $msg;
 }
-$a = $_GET["a"];
+$a = $_GET['a'];
 //创建连接
-$conn = new mysqli($host, $sqlusername, $password, $dbname);
-$sql = "SELECT id, q, a FROM $tablename";
+$conn = new mysqli($host,$sqlusername,$password,$dbname);
+$sql = "SELECT q, a FROM $tablename";
 $conn->query($sql);
-if($a == ""){
+if($a == ''){
 	$sql = "SELECT * from $tablename WHERE q=\"{$q}\"";
 	$result = $conn->query($sql);
 	$rows = mysqli_fetch_array($result);
