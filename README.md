@@ -1,7 +1,7 @@
 # telegram-bot
 xiwangly的telegram机器人程序:telegram-bot
 
-[@BotFather]:[@BotFather](https://t.me/BotFather)
+[@BotFather]:https://t.me/BotFather
 
 建议：下载后请把文件夹重命名为`telegram-bot`或其他，不建议保留分支名称。
 
