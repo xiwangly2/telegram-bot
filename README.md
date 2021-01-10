@@ -7,7 +7,7 @@ xiwangly的telegram机器人程序:telegram-bot
 
 如有安全需求，请把`config.php`放置在Web文档树之外，并且修改各脚本的相关文件引入
 
->请联系telegram中的[@BotFather]机器人注册自己的机器人，并填入下面的信息<br/>
+>请联系telegram中的[@BotFather]机器人注册自己的机器人，机器人的多数设置都在这里进行<br/>
 >重要，请勿泄露`$token`，如果已泄露，请联系[@BotFather]机器人更改`$token`<br/>
 
 >`config.php`中的`$hookurl`需要修改为自己的项目地址（网站必须使用https）。<br/>
