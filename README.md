@@ -3,6 +3,8 @@ xiwangly的telegram机器人程序:telegram-bot
 
 [@BotFather]:https://t.me/BotFather
 
+对于中国用户：搭建此脚本需要能访问国外网络的服务器或虚拟主机
+
 建议：下载后请把文件夹重命名为`telegram-bot`或其他，不建议保留分支名称。
 
 如有安全需求，请把`config.php`放置在Web文档树之外，并且修改各脚本的相关文件引入
