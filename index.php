@@ -5,13 +5,13 @@ include_once './function.php';
 $update = json_decode(@file_get_contents('php://input'),true);
 $chat_id = $update['message']['chat']['id'];
 $username = $update['message']['from']['username'];
-$is_bot = $update['message']['from']['username'];
+$is_bot = $update['message']['from']['is_bot'];
 $msg = $update['message']['text'];
 if($debug = '1'){
 	@file_put_contents('update.txt',print_r($update,true));
 }
 //发送给用户
-if(!isset($msg) || $msg == ''){
+if(!isset($msg) || $msg == '' || $is_bot != ''){
 	die;
 }
 include './tgtext.php';
