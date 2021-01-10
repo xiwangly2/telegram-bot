@@ -11,12 +11,6 @@ if(!isset($q) || $q == ''){
 $a = $_GET["a"];
 //创建连接
 $conn = new mysqli($host, $sqlusername, $password, $dbname);
-//设置编码
-$sql = "DEFAULT CHARSET=utf8mb4";
-$conn->query($sql);
-//使用sql创建数据表
-$sql = "CREATE TABLE $tablename (id INT(64) UNSIGNED AUTO_INCREMENT PRIMARY KEY,q VARCHAR(128) NOT NULL,a VARCHAR(1280) NOT NULL,reg_date TIMESTAMP)";
-$conn->query($sql);
 $sql = "SELECT id, q, a FROM $tablename";
 $conn->query($sql);
 if($a == ""){
