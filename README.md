@@ -7,9 +7,9 @@ xiwangly的telegram机器人程序:telegram-bot
 
 >请联系telegram中的[@BotFather](https://t.me/BotFather)机器人注册自己的机器人，并填入下面的信息<br/>
 >重要，请勿泄露$token<br/>
->$hookurl需要修改为自己的项目地址（网站必须使用https），修改完成后请访问`webhook.php`完成挂钩
+>`config.php`中的$hookurl需要修改为自己的项目地址（网站必须使用https）
 
-`config.php`为必填项
+**`config.php`为必填项，完成后请访问`webhook.php`完成网络挂钩**
 
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
