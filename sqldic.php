@@ -11,8 +11,8 @@ if(!isset($q) || $q == ''){
 $a = $_GET['a'];
 //创建连接
 $conn = new mysqli($host,$sqlusername,$password,$dbname);
-$sql = "SELECT q, a FROM $tablename";
-$conn->query($sql);
+//$sql = "SELECT q, a FROM $tablename";
+//$conn->query($sql);
 if($a == ''){
 	$sql = "SELECT * from $tablename WHERE q=\"{$q}\"";
 	$result = $conn->query($sql);
