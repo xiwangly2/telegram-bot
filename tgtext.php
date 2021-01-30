@@ -1,12 +1,5 @@
 <?php
-if($msg == "/on" && $username == $administrator){
-	@file_put_contents('./switch.txt','enabled');
-	$text = "Bot is enabled.";
-}
-elseif(@file_get_contents('./switch.txt') == 'disabled'){
-	die;
-}
-elseif($msg == "/off" && $username == $administrator){
+if($msg == "/off" && $username == $administrator){
 	@file_put_contents('./switch.txt','disabled');
 	$text = "Bot is disabled.";
 }
@@ -22,8 +15,8 @@ elseif(preg_match('/复读/i',"{$msg}")){
 elseif($msg == "/ping" || $msg == "/ping{$botname}"){
 	$text = "ping <ip>";
 }
-elseif(preg_match('/ping/i',"{$msg}")){
-	$ip = substr($msg,5);
+elseif(preg_match('/ping /i',"{$msg}")){
+	$ip = substr($msg,6);
 	include_once './ping.php';
 	$text = $sc;
 }
@@ -33,9 +26,9 @@ elseif($msg == "/uuid" || $msg == "/uuid{$botname}"){
 elseif($msg == "/dwz" || $msg == "/dwz{$botname}"){
 	$text = "dwz <url>";
 }
-elseif(preg_match('/dwz/i',"{$msg}")){
-	$url = @urlencode(substr($msg,4));
-	$text= getHttps("http://12n.top/dwz.php?url={$url}");
+elseif(preg_match('/dwz /i',"{$msg}")){
+	$url_dwz = @urlencode(substr($msg,5));
+	$text= getHttps("http://12n.top/dwz.php?url={$url_dwz}");
 }
 elseif(preg_match('/m/i',"{$msg}")){
 	$msg = substr($msg,2);
@@ -52,12 +45,16 @@ elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
 	$text = $data[array_rand($data)];
 	$text = str_replace(array("\r","\n","\r\n"),'',$text);
 }
+elseif($msg == "/info" || $msg == "/info{$botname}"){
+	$time_info = date("Y-m-d H:i:s",$date);
+	$text = "botname:{$botname}\ndate:{$date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n	id:{$from_id}\n	is bot:{$is_bot}\n	first name:{$first_name}\n	last name:{$last_name}\n	username:{$username}\n	language code:{$language_code}\nchat:\n	id:{$chat_id}\n	title:{$chat_title}\n	type:{$chat_type}\ntext:{$text}\nentities:\n	offset:{$entities_offset}\n	length:{$entities_length}\n	type:{$entities_type}";
+}
 $text = @rawurlencode($text);
-$url = "https://api.telegram.org/bot{$token}/sendmessage?chat_id={$chat_id}&text={$text}";
+$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
 if(strlen($url) <= $getdatamax){
 	getHttps($url);
 }
 else{
-	post($url);
+	post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}");
 }
 ?>

@@ -6,7 +6,7 @@
 //$debug可能的值为0或1，用于开启日志记录和调试，默认关闭，填1开启
 $token = '';
 $connectroot = "https://api.telegram.org/bot{$token}/";
-$hookurl = 'https://这里修改为您的域名/telegram-bot/index.php';
+$hookurl = 'https://您的域名/telegram-bot/index.php';
 $botname = '@机器人用户名';
 $administrator = '主人用户名';
 $getdatamax = '2083';
@@ -15,5 +15,5 @@ $sqlusername = '数据库用户名';
 $password = '数据库密码';
 $dbname = '数据库名';
 $tablename = '数据库表名';
-$debug = '0 or 1';
+$debug = '0';
 ?>

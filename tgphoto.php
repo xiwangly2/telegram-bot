@@ -7,11 +7,11 @@ if($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg 
 	$text = "https://xiwangly.top/images/{$file}";
 }
 $text = @rawurlencode($text);
-$url = "https://api.telegram.org/bot{$token}/sendphoto?chat_id={$chat_id}&photo={$text}";
+$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
 if(strlen($url) <= $getdatamax){
 	getHttps($url);
 }
 else{
-	post($url);
+	post("{$connectroot}sendphoto","chat_id={$chat_id}&photo={$text}");
 }
 ?>

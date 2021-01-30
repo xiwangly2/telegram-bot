@@ -6,11 +6,11 @@ elseif(preg_match('/複讀/i',"{$msg}")){
 	$text = substr($msg,6);
 }
 $text = @rawurlencode($text);
-$url = "https://api.telegram.org/bot{$token}/sendmessage?chat_id={$chat_id}&text={$text}";
+$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
 if(strlen($url) <= $getdatamax){
 	getHttps($url);
 }
 else{
-	post($url);
+	post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}");
 }
 ?>
