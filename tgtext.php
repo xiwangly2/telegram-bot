@@ -21,14 +21,14 @@ elseif(preg_match('/ping /i',"{$msg}")){
 	$text = $sc;
 }
 elseif($msg == "/uuid" || $msg == "/uuid{$botname}"){
-	$text = uuid();
+	$text = @uuid();
 }
 elseif($msg == "/dwz" || $msg == "/dwz{$botname}"){
 	$text = "dwz <url>";
 }
 elseif(preg_match('/dwz /i',"{$msg}")){
 	$url_dwz = @urlencode(substr($msg,5));
-	$text= getHttps("http://12n.top/dwz.php?url={$url_dwz}");
+	$text= @getHttps("http://12n.top/dwz.php?url={$url_dwz}");
 }
 elseif(preg_match('/m/i',"{$msg}")){
 	$msg = substr($msg,2);
@@ -40,21 +40,14 @@ elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
 	if(!file_exists($yiyanfilename)){
 		die;
 	}
-	$data = file_get_contents($yiyanfilename);
+	$data = @file_get_contents($yiyanfilename);
 	$data = explode(PHP_EOL,$data);
 	$text = $data[array_rand($data)];
 	$text = str_replace(array("\r","\n","\r\n"),'',$text);
 }
 elseif($msg == "/info" || $msg == "/info{$botname}"){
-	$time_info = date("Y-m-d H:i:s",$date);
-	$text = "botname:{$botname}\ndate:{$date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n	id:{$from_id}\n	is bot:{$is_bot}\n	first name:{$first_name}\n	last name:{$last_name}\n	username:{$username}\n	language code:{$language_code}\nchat:\n	id:{$chat_id}\n	title:{$chat_title}\n	type:{$chat_type}\ntext:{$text}\nentities:\n	offset:{$entities_offset}\n	length:{$entities_length}\n	type:{$entities_type}";
+	$time_info = date("Y-m-d H:i:s",$chat_date);
+	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n	id:{$from_id}\n	is bot:{$is_bot}\n	first name:{$first_name}\n	last name:{$last_name}\n	username:{$username}\n	language code:{$language_code}\nchat:\n	id:{$chat_id}\n	title:{$chat_title}\n	type:{$chat_type}\ntext:{$text}\nentities:\n	offset:{$entities_offset}\n	length:{$entities_length}\n	type:{$entities_type}";
 }
-$text = @rawurlencode($text);
-$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
-if(strlen($url) <= $getdatamax){
-	getHttps($url);
-}
-else{
-	post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}");
-}
+@sendtgtext($text);
 ?>

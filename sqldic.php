@@ -5,7 +5,7 @@
 include_once './config.php';
 //get参数
 $q = $_GET['q'];
-if(!isset($q) || $q == ''){
+if(empty($q)){
 	$q = $msg;
 }
 $a = $_GET['a'];

@@ -1,4 +1,37 @@
 <?php
+function sendtgtext($text){
+	global $connectroot,$chat_id,$getdatamax;
+	$text = @rawurlencode($text);
+	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
+	if(strlen($url) <= $getdatamax){
+		getHttps($url);
+	}
+	else{
+		post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}");
+	}
+}
+function sendtgphoto($text){
+	global $connectroot,$chat_id,$getdatamax;
+	$text = @rawurlencode($text);
+	$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
+	if(strlen($url) <= $getdatamax){
+		getHttps($url);
+	}
+	else{
+		post("{$connectroot}sendphoto","chat_id={$chat_id}&photo={$text}");
+	}
+}
+function sendtgdocument($text){
+	global $connectroot,$chat_id,$getdatamax;
+	$text = @rawurlencode($text);
+	$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
+	if(strlen($url) <= $getdatamax){
+		getHttps($url);
+	}
+	else{
+		post("{$connectroot}senddocument","chat_id={$chat_id}&document={$text}");
+	}
+}
 function getHttps($url,$isoutput = 0){
 	//初始化
 	$ch = curl_init();

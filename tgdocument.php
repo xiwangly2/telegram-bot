@@ -6,12 +6,8 @@ if($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
 	$file = $dir.$list[$rand];
 	$text = "https://xiwangly.top/images/{$file}";
 }
-$text = @rawurlencode($text);
-$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
-if(strlen($url) <= $getdatamax){
-	getHttps($url);
+elseif($msg == "/sqllolifile" || $msg == "/sqllolifile{$botname}"){
+	$text = "https://xiwangly.top/images_r1.php";
 }
-else{
-	post("{$connectroot}senddocument","chat_id={$chat_id}&document={$text}");
-}
+@sendtgdocument($text);
 ?>

@@ -6,12 +6,5 @@ if($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg 
 	$file = $dir.$list[$rand];
 	$text = "https://xiwangly.top/images/{$file}";
 }
-$text = @rawurlencode($text);
-$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
-if(strlen($url) <= $getdatamax){
-	getHttps($url);
-}
-else{
-	post("{$connectroot}sendphoto","chat_id={$chat_id}&photo={$text}");
-}
+@sendtgphoto($text);
 ?>

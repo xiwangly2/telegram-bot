@@ -3,6 +3,7 @@ help - 帮助
 loli - 来份萝莉
 lolifile -来份萝莉（文件）
 uuid - 生成UUID
+ping - 网络诊断工具
 dwz - 生成短网址
 yiyan - 随机一言
 info - 信息
