@@ -16,6 +16,23 @@ xiwangly的telegram机器人程序:telegram-bot
 数据库信息是可选的，用于部分功能，填入后请导入`dic.sql`数据库<br/>
 `$debug`可能的值为`0`或`1`，用于开启日志记录和调试，默认关闭，填`1`开启
 
+config设置详解：（前面已提到过的略）
+
+```
+$token = '';//
+$connectroot = "https://api.telegram.org/bot{$token}/";//连接根信息
+$hookurl = 'https://您的域名/telegram-bot/index.php';//telegram-bot项目的主文件URL地址
+$botname = '@机器人用户名';//
+$administrator = '主人用户名';//用于机器功能管理
+$getdatamax = '2083';//设置允许容纳GET方式发送的数据包最大大小（单位B），设置为0则始终采用POST方法发送数据
+$host = 'host(:port)';//数据库的host地址和端口，若端口默认为3306则可省略输入port
+$sqlusername = '数据库用户名';//
+$password = '数据库密码';//
+$dbname = '数据库名';//
+$tablename = '数据库表名';//
+$debug = '0';//填1开启调试和消息记录，仅用于开发测试环境
+```
+
 **`config.php`为必填项，完成后请访问`webhook.php`完成网络挂钩**
 
 参考：
