@@ -16,7 +16,7 @@ xiwangly的telegram机器人程序:telegram-bot
 数据库信息是可选的，用于部分功能，填入后请导入`dic.sql`数据库<br/>
 `$debug`可能的值为`0`或`1`，用于开启日志记录和调试，默认关闭，填`1`开启
 
-config设置详解：（前面已提到过的略）
+config.php设置详解：（前面已提到过的略）
 
 ```php
 $token = '';//
