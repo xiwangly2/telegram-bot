@@ -39,21 +39,9 @@ if($debug = '1'){
 	*/
 	@file_put_contents('update.txt',$php_input);
 }
-//如果文本为空或机器人的消息则终止
-if(empty($msg) || $is_bot == 'true'){
-	die;
-}
-if($msg == "/on" && $username == $administrator){
-	@file_put_contents('./switch.txt','enabled');
-	$text = "Bot is enabled.";
-}
-//开关
-if(@file_get_contents('./switch.txt') == 'disabled'){
-	die;
-}
+//读取开关状态
+$switch = @file_get_contents('./switch.txt');
 include './tgtext.php';
 //開啟繁體（測試中）
 //include './tgtext2.php';
-include './tgphoto.php';
-include './tgdocument.php';
 ?>
