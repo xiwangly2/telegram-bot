@@ -18,7 +18,7 @@ xiwangly的telegram机器人程序:telegram-bot
 
 config设置详解：（前面已提到过的略）
 
-```
+```php
 $token = '';//
 $connectroot = "https://api.telegram.org/bot{$token}/";//连接根信息
 $hookurl = 'https://您的域名/telegram-bot/index.php';//telegram-bot项目的主文件URL地址
