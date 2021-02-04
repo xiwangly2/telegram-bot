@@ -36,6 +36,9 @@ $debug = '0';//填1开启调试和消息记录，仅用于开发测试环境
 
 **`config.php`为必填项，完成后请访问`webhook.php`完成网络挂钩**
 
+更新日志：
+>2021.2.4 增加对GitHub webhook的消息推送支持(beta)，优化代码使之更易于开发者自定义，修复了一些bug
+
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
 * [Telegram Bot API](https://core.telegram.org/bots/api)
