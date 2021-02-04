@@ -37,6 +37,7 @@ if($debug = '1'){
 		@file_put_contents("update/{$chat_id}_{$chat_date}.txt",json_encode($update,JSON_UNESCAPED_UNICODE));
 	}
 	*/
+	//@file_put_contents('update.txt',print_r($update,true));
 	@file_put_contents('update.txt',$php_input);
 }
 //读取开关状态

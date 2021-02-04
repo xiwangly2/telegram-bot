@@ -9,6 +9,7 @@ $connectroot = "https://api.telegram.org/bot{$token}/";
 $hookurl = 'https://您的域名/telegram-bot/index.php';
 $botname = '@机器人用户名';
 $administrator = '主人用户名';
+$administrator_id = '主人id';
 $getdatamax = '2083';
 $host = 'host(:port)';
 $sqlusername = '数据库用户名';

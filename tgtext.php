@@ -24,7 +24,7 @@ elseif($msg == "/off" && $username == $administrator){
 	@file_put_contents('./switch.txt','disabled');
 	@sendtgtext('Bot is disabled.');
 }
-elseif($msg == "菜单" || $msg == "/菜单" || $msg == "/help" || $msg == "/help{$botname}"){
+elseif($msg == "菜单" || $msg == "/菜单" || $msg == "help" || $msg == "/help" || $msg == "/help{$botname}"){
 	@sendtgtext(@file_get_contents('./menu.txt'));
 }
 elseif($msg == "/start" || $msg == "/start{$botname}"){
@@ -71,7 +71,7 @@ elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
 }
 elseif($msg == "/info" || $msg == "/info{$botname}"){
 	$time_info = date("Y-m-d H:i:s",$chat_date);
-	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n	id:{$from_id}\n	is bot:{$is_bot}\n	first name:{$first_name}\n	last name:{$last_name}\n	username:{$username}\n	language code:{$language_code}\nchat:\n	id:{$chat_id}\n	title:{$chat_title}\n	type:{$chat_type}\ntext:{$text}\nentities:\n	offset:{$entities_offset}\n	length:{$entities_length}\n	type:{$entities_type}";
+	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}";
 	@sendtgtext($text);
 }
 elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$botname}"){
@@ -80,7 +80,8 @@ elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $
 	$rand = @rand(2,@count($list)-'1');
 	$file = $dir.$list[$rand];
 	$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-	$text = "{$http_type}xiwangly.top/images/{$file}";
+	$http_host = $_SERVER['HTTP_HOST'];
+	$text = "{$http_type}{$http_host}/images/{$file}";
 	@sendtgphoto($text);
 }
 elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
@@ -88,7 +89,9 @@ elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
 	$file = $dir.$list[$rand];
-	$text = "https://xiwangly.top/images/{$file}";
+	$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+	$http_host = $_SERVER['HTTP_HOST'];
+	$text = "{$http_type}{$http_host}/images/{$file}";
 	@sendtgdocument($text);
 }
 ?>
