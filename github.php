@@ -33,7 +33,7 @@ if($switch == 'disabled'){
 }
 $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
 $http_host = $_SERVER['HTTP_HOST'];
-if(!empty($github_ref)){
+if(!empty($github_ref) && !empty($github_before) && !empty($github_after)){
 	$add1 = "ref:{$github_ref}\n前:{$github_before}\n后:{$github_after}\n";
 }
 $text = "您的GitHub有新的消息\n{$add1}库:\n\tid:{$github_repository_id}\n\tname:{$github_repository_name}\n\tfull name:{$github_repository_full_name}\n\turl:{$github_repository_url}\n更多请查看:{$http_type}{$http_host}/telegram-bot/github_update.txt";

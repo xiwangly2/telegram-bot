@@ -1,5 +1,6 @@
 <?php
 //如果文本为空或机器人的消息则终止（防机器人间循环发送消息消耗服务器流量）
+//群组中消息需要加/前缀触发命令,注意参数有无空格
 if(empty($msg) || $is_bot == 'true'){
 	die;
 }
@@ -8,6 +9,7 @@ elseif($msg == "/on" && $username == $administrator){
 		@sendtgtext('Bot is running.');
 	}
 	elseif(empty($switch)){
+		@file_put_contents('./switch.txt','enabled');
 		@sendtgtext('Bot is running.');
 		@sendtgtext('The robot may be running for the first time, welcome to use.');
 	}
@@ -31,7 +33,7 @@ elseif($msg == "/start" || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
 }
 elseif(preg_match('/复读/i',"{$msg}")){
-	@sendtgtext(substr($msg,6));
+	@sendtgtext(substr($msg,7));
 }
 elseif($msg == "/ping" || $msg == "/ping{$botname}"){
 	@sendtgtext('ping <ip>');
