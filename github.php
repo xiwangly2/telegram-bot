@@ -1,6 +1,6 @@
 <?php
 /*
-//Payload URL:https://您的域名/telegram-bot/gethub.php
+//Payload URL:https://您的域名/telegram-bot/github.php
 //content type:application/json
 //SSL verification:Enable SSL verification
 //Active:true
