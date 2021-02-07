@@ -1,2 +1,0 @@
-{"update_id":973650296,
-"message":{"message_id":901,"from":{"id":1367850918,"is_bot":false,"first_name":"ly","last_name":"xiwang","username":"xiwangly","language_code":"zh-hans"},"chat":{"id":-1001445646139,"title":"\u5e0c\u671b\u7684\u6d4b\u8bd5","type":"supergroup"},"date":1612682011,"text":"https://t.me/tg2333","entities":[{"offset":0,"length":19,"type":"url"}]}}
