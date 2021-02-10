@@ -1,7 +1,7 @@
 <?php
 //如果文本为空或机器人的消息则终止（防机器人间循环发送消息消耗服务器流量）
 //群组中消息需要加/前缀触发命令,注意参数有无空格
-if(empty($msg) || $is_bot == 'true'){
+if(empty($msg) || $is_bot == '1'){
 	die;
 }
 elseif($msg == "/on" && $username == $administrator){
