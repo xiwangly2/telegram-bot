@@ -18,6 +18,8 @@ elseif($msg == "/on" && $username == $administrator){
 	@sendtgtext('Bot is enabled.');
 	}
 }
+//正则表达式预解析
+@pre($msg);
 //开关
 if(@file_get_contents('./switch.txt') == 'disabled'){
 	die;
@@ -33,13 +35,15 @@ elseif($msg == "/start" || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
 }
 elseif(preg_match('/复读/i',"{$msg}")){
-	@sendtgtext(substr($msg,7));
+	$text = substr($msg,7);
+	@sendtgtext($text);
 }
 elseif($msg == "/ping" || $msg == "/ping{$botname}"){
 	@sendtgtext('ping <ip>');
 }
-elseif(preg_match('/ping /i',"{$msg}")){
-	$ip = substr($msg,6);
+elseif($var0 == '/ping'){
+	@sendtgtext('请耐心等待...');
+	$ip = $var1;
 	include_once './ping.php';
 	@sendtgtext($sc);
 }
@@ -49,13 +53,14 @@ elseif($msg == "/uuid" || $msg == "/uuid{$botname}"){
 elseif($msg == "/dwz" || $msg == "/dwz{$botname}"){
 	@sendtgtext('dwz <url>');
 }
-elseif(preg_match('/dwz /i',"{$msg}")){
-	$url_dwz = @urlencode(substr($msg,5));
+elseif($var0 == '/dwz'){
+	@sendtgtext('请耐心等待...');
+	$url_dwz = $var1;
 	$text= @getHttps("http://12n.top/dwz.php?url={$url_dwz}",1);
 	@sendtgtext($text);
 }
-elseif(preg_match('/m/i',"{$msg}")){
-	$msg = substr($msg,2);
+elseif($var0 == '/m'){
+	$msg = $var1;
 	include_once './sqldic.php';
 	$text = $rows['a'];
 	@sendtgtext($text);
@@ -81,9 +86,7 @@ elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
 	$file = $dir.$list[$rand];
-	$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-	$http_host = $_SERVER['HTTP_HOST'];
-	$text = "{$http_type}{$http_host}/images/{$file}";
+	$text = "{$http_body}/images/{$file}";
 	@sendtgphoto($text);
 }
 elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
@@ -91,9 +94,7 @@ elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
 	$file = $dir.$list[$rand];
-	$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
-	$http_host = $_SERVER['HTTP_HOST'];
-	$text = "{$http_type}{$http_host}/images/{$file}";
+	$text = "{$http_body}/images/{$file}";
 	@sendtgdocument($text);
 }
 ?>

@@ -6,12 +6,10 @@ ping <ip>
 start - 開始
 help - 幫助
 loli - 來份蘿莉
-lolifile -來份蘿莉（文件）
+lolifile - 來份蘿莉（文件）
 uuid - 生成UUID
-dwz - 生成短網址
-m - m後接字符串（智能聊天）
+dwz <url> - 生成短網址
+m <msg> - （智能聊天）
 yiyan - 隨機一言
 info - 信息
-********************
-(群組中需要加/前綴)
 ********************

@@ -6,7 +6,11 @@
 //$debug可能的值为0或1，用于开启日志记录和调试，默认关闭，填1开启
 $token = '';
 $connectroot = "https://api.telegram.org/bot{$token}/";
-$hookurl = 'https://您的域名/telegram-bot/index.php';
+$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+$http_host = $_SERVER['HTTP_HOST'];
+$http_body = "{$http_type}{$http_host}";
+$branch = 'telegram-bot';
+$hookurl = "{$http_body}/{$branch}/index.php";
 $botname = '@机器人用户名';
 $administrator = '主人用户名';
 $administrator_id = '主人id';

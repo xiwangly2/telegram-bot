@@ -3,6 +3,9 @@ include_once './config.php';
 include_once './function.php';
 //获取反射信息
 $php_input = @file_get_contents('php://input');
+if(empty($php_input)){
+	die;
+}
 $update = json_decode($php_input,true);
 //解析反射信息
 $msg = $update['message']['text'];
@@ -28,7 +31,7 @@ if(!empty($entities_type)){
 	$entities_length = $update['message']['entities']['0']['length'];
 }
 //debug
-if($debug = '1'){
+if($debug == '1'){
 /*
 	if(!file_exists('update')){
 		@mkdir('update');
@@ -37,8 +40,8 @@ if($debug = '1'){
 		@file_put_contents("update/{$chat_id}_{$chat_date}.txt",json_encode($update,JSON_UNESCAPED_UNICODE));
 	}
 	*/
-	//@file_put_contents('update.txt',print_r($update,true));
-	@file_put_contents('update.txt',$php_input);
+	@file_put_contents('update.txt',print_r($update,true));
+	//@file_put_contents('update.txt',$php_input);
 }
 //读取开关状态
 $switch = @file_get_contents('./switch.txt');

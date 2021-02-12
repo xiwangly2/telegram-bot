@@ -1,9 +1,18 @@
 <?php
 if($msg == "菜單" || $msg == "/菜單"){
 	$text = @file_get_contents('./menu2.txt');
+	@sendtgtext($text);
 }
 elseif(preg_match('/複讀/i',"{$msg}")){
-	$text = substr($msg,6);
+	$text = substr($msg,7);
+	@sendtgtext($text);
 }
-@sendtgtext($text);
+elseif($msg == "來份蘿莉" || $msg == "/來份蘿莉"){
+	$dir = '../images/';
+	$list = @scandir($dir,0);
+	$rand = @rand(2,@count($list)-'1');
+	$file = $dir.$list[$rand];
+	$text = "{$http_body}/images/{$file}";
+	@sendtgphoto($text);
+}
 ?>

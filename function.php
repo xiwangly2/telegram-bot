@@ -1,5 +1,6 @@
 <?php
 function sendtgtext($text){
+	//发送文本消息
 	global $connectroot,$chat_id,$getdatamax;
 	$text = @rawurlencode($text);
 	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
@@ -11,6 +12,7 @@ function sendtgtext($text){
 	}
 }
 function sendtgphoto($text){
+	//发送图片消息
 	global $connectroot,$chat_id,$getdatamax;
 	$text = @rawurlencode($text);
 	$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
@@ -22,6 +24,7 @@ function sendtgphoto($text){
 	}
 }
 function sendtgdocument($text){
+	//发送文档消息
 	global $connectroot,$chat_id,$getdatamax;
 	$text = @rawurlencode($text);
 	$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
@@ -33,6 +36,7 @@ function sendtgdocument($text){
 	}
 }
 function getHttps($url,$isoutput = 1){
+	//获取https网页内容，GET请求
 	//初始化
 	$ch = curl_init();
 	//设置选项，包括URL
@@ -58,6 +62,7 @@ function getHttps($url,$isoutput = 1){
 	curl_close($ch);
 }
 function post($url,$post_string = ''){
+	//POST请求
 	$ch = curl_init();
 	curl_setopt($ch,CURLOPT_URL,$url);
 	curl_setopt($ch,CURLOPT_POSTFIELDS,$post_string);
@@ -68,7 +73,19 @@ function post($url,$post_string = ''){
 	return $data;
 }
 function uuid(){
+	//生成UUID
 	$chars = md5(uniqid(mt_rand(),true));
 	$uuid = substr($chars,0,8).'-'.substr($chars,8,4).'-'.substr($chars,12,4).'-'.substr($chars,16,4).'-'.substr($chars,20,12);
 	return $uuid;
+}
+function pre($msg){
+	//正则表达式解析文本参数
+	//使用逗号或空格(包含" ")分隔短语
+	$array = preg_split("/( )+/",$msg);
+	$num = count($array);
+	for($i = 0;$i < $num;$i++){
+		$c = 'var'.$i;
+		global $$c;
+		$$c = $array[$i];
+	}
 }

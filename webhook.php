@@ -2,9 +2,11 @@
 include_once './config.php';
 include_once './function.php';
 if(@file_get_contents('./webhook.lck') =='true'){
-	$url = "{$connectroot}getWebhookInfo";
-	echo(getHttps($url,1));
-	die('<hr/>To change this setting, change or delete the "webhook.lck" file to unlock the settings.');
+	if($debug == '1'){
+		$url = "{$connectroot}getWebhookInfo";
+		echo(getHttps($url,1).'<hr/>');
+	}
+	die('To change this setting, change or delete the "webhook.lck" file to unlock the settings.');
 }
 //deletehook
 $url = "{$connectroot}deleteWebhook";
