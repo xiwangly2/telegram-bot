@@ -5,6 +5,8 @@ xiwangly的telegram机器人程序:telegram-bot
 
 对于中国大陆用户：使用此脚本需要能访问国际网络的服务器或虚拟主机，可以尝试使用ping命令判断连通性：`ping -c 3 api.telegram.org`
 
+支持的语言：中文（简体），中文（繁体）（测试中）
+
 建议：下载后请把文件夹重命名为`telegram-bot`或其他，不建议保留分支名称。php版本建议>=7.2
 
 如有安全需求，请把`config.php`放置在Web文档树之外，并且修改各脚本的相关文件引入
