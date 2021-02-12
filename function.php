@@ -80,7 +80,7 @@ function uuid(){
 }
 function pre($msg){
 	//正则表达式解析文本参数
-	//使用逗号或空格(包含" ")分隔短语
+	//使用空格分隔短语
 	$array = preg_split("/( )+/",$msg);
 	$num = count($array);
 	for($i = 0;$i < $num;$i++){
