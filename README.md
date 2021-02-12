@@ -23,7 +23,11 @@ config.php设置详解：（前面已提到过的略）
 ```php
 $token = '';//
 $connectroot = "https://api.telegram.org/bot{$token}/";//连接根信息
-$hookurl = 'https://您的域名/telegram-bot/index.php';//telegram-bot项目的主文件URL地址
+$http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';//判断http协议
+$http_host = $_SERVER['HTTP_HOST'];//获取主机host
+$http_body = "{$http_type}{$http_host}";//合并协议和host
+$branch = 'telegram-bot';//分支名，即存放这个项目的文件夹名
+$hookurl = "{$http_body}/{$branch}/index.php";//telegram-bot项目的主文件URL地址
 $botname = '@机器人用户名';//
 $administrator = '主人用户名';//用于机器功能管理
 $administrator_id = '主人id';//用于向主人发送消息，这个id就是from_id，可使用自带命令'/info'查看id，不要填错，推荐用于私聊消息推送
