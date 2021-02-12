@@ -44,3 +44,4 @@ $debug = '0';//填1开启调试和消息记录，仅用于开发测试环境
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
 * [Telegram Bot API](https://core.telegram.org/bots/api)
+* [Telegram APIs](https://core.telegram.org/api)
