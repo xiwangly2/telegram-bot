@@ -26,7 +26,7 @@ $connectroot = "https://api.telegram.org/bot{$token}/";//连接根信息
 $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';//判断http协议
 $http_host = $_SERVER['HTTP_HOST'];//获取主机host
 $http_body = "{$http_type}{$http_host}";//合并协议和host
-$branch = 'telegram-bot';//分支名，即存放这个项目的文件夹名
+$branch = 'telegram-bot';//存放这个项目的文件夹名
 $hookurl = "{$http_body}/{$branch}/index.php";//telegram-bot项目的主文件URL地址
 $botname = '@机器人用户名';//
 $administrator = '主人用户名';//用于机器功能管理
