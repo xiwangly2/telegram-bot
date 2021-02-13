@@ -60,6 +60,7 @@ elseif($var0 == '/dwz'){
 	@sendtgtext($text);
 }
 elseif($var0 == '/m'){
+	//群聊智能聊天
 	$msg = $var1;
 	include_once './sqldic.php';
 	$text = $rows['a'];
@@ -82,6 +83,7 @@ elseif($msg == "/info" || $msg == "/info{$botname}"){
 	@sendtgtext($text);
 }
 elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$botname}"){
+	//可能需要重新指定路径
 	$dir = '../images/';
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
@@ -90,11 +92,18 @@ elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $
 	@sendtgphoto($text);
 }
 elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
+	//可能需要重新指定路径
 	$dir = '../images/';
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');
 	$file = $dir.$list[$rand];
 	$text = "{$http_body}/images/{$file}";
 	@sendtgdocument($text);
+}
+elseif($from_id == $chat_id){
+	//私聊智能聊天
+	include_once './sqldic.php';
+	$text = $rows['a'];
+	@sendtgtext($text);
 }
 ?>
