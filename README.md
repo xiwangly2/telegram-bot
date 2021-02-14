@@ -13,6 +13,7 @@ xiwangly的telegram机器人程序:telegram-bot
 
 >请联系telegram中的[@BotFather]机器人注册自己的机器人，机器人的多数设置都在这里进行<br/>
 >请勿泄露`$token`，如果已泄露，请联系[@BotFather]机器人更改`$token`<br/>
+>更换token之后需要重新访问webhook.php完成网络挂钩
 
 >`config.php`中的`$hookurl`需要修改为自己的项目地址（网站必须使用https）<br/>
 数据库信息是可选的，用于部分功能，填入后请导入`dic.sql`数据库<br/>
