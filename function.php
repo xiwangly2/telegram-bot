@@ -54,7 +54,7 @@ function getHttps($url,$isoutput = 1){
 	}
 	elseif($isoutput == 2)
 	{
-		@file_put_contents('./curldata.txt');//写入文件
+		@file_put_contents('curldata.txt');//写入文件
 	}
 	//$isoutput为0或其他则仅访问不输出
 	//$str = htmlspecialchars($output);

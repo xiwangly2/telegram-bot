@@ -1,6 +1,6 @@
 <?php
-include_once './config.php';
-include_once './function.php';
+include_once 'config.php';
+include_once 'function.php';
 //获取反射信息
 $php_input = @file_get_contents('php://input');
 if(empty($php_input)){
@@ -44,8 +44,8 @@ if($debug == '1'){
 	//@file_put_contents('update.txt',$php_input);
 }
 //读取开关状态
-$switch = @file_get_contents('./switch.txt');
-include './tgtext.php';
+$switch = @file_get_contents('switch.txt');
+include 'tgtext.php';
 //開啟繁體（測試中）
-//include './tgtext2.php';
+//include 'tgtext2.php';
 ?>

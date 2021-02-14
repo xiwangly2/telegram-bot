@@ -1,7 +1,7 @@
 <?php
-include_once './config.php';
-include_once './function.php';
-if(@file_get_contents('./webhook.lck') =='true'){
+include_once 'config.php';
+include_once 'function.php';
+if(@file_get_contents('webhook.lck') =='true'){
 	if($debug == '1'){
 		$url = "{$connectroot}getWebhookInfo";
 		echo(getHttps($url,1).'<hr/>');
@@ -14,5 +14,5 @@ getHttps($url,0);
 //sethook
 $url = "{$connectroot}setWebhook?url={$hookurl}";
 echo(getHttps($url,1));
-@file_put_contents('./webhook.lck','true');
+@file_put_contents('webhook.lck','true');
 ?>

@@ -9,32 +9,32 @@ elseif($msg == "/on" && $username == $administrator){
 		@sendtgtext('Bot is running.');
 	}
 	elseif(empty($switch)){
-		@file_put_contents('./switch.txt','enabled');
+		@file_put_contents('switch.txt','enabled');
 		@sendtgtext('Bot is running.');
 		@sendtgtext('The robot may be running for the first time, welcome to use.');
 	}
 	else{
-	@file_put_contents('./switch.txt','enabled');
+	@file_put_contents('switch.txt','enabled');
 	@sendtgtext('Bot is enabled.');
 	}
 }
+//开关
 //正则表达式预解析
 @pre($msg);
-//开关
-if(@file_get_contents('./switch.txt') == 'disabled'){
+if(@file_get_contents('switch.txt') == 'disabled'){
 	die;
 }
 elseif($msg == "/off" && $username == $administrator){
-	@file_put_contents('./switch.txt','disabled');
+	@file_put_contents('switch.txt','disabled');
 	@sendtgtext('Bot is disabled.');
 }
 elseif($msg == "菜单" || $msg == "/菜单" || $msg == "help" || $msg == "/help" || $msg == "/help{$botname}"){
-	@sendtgtext(@file_get_contents('./menu.txt'));
+	@sendtgtext(@file_get_contents('menu.txt'));
 }
 elseif($msg == "/start" || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
 }
-elseif(preg_match('/复读/i',"{$msg}")){
+elseif(preg_match('/复读/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,7);
 	@sendtgtext($text);
 }
@@ -44,7 +44,7 @@ elseif($msg == "/ping" || $msg == "/ping{$botname}"){
 elseif($var0 == '/ping'){
 	@sendtgtext('请耐心等待...');
 	$ip = $var1;
-	include_once './ping.php';
+	include_once 'plugins/ping.php';
 	@sendtgtext($sc);
 }
 elseif($msg == "/uuid" || $msg == "/uuid{$botname}"){
@@ -61,13 +61,14 @@ elseif($var0 == '/dwz'){
 }
 elseif($var0 == '/m'){
 	//群聊智能聊天
-	$msg = $var1;
-	include_once './sqldic.php';
+	include_once 'plugins/sqldic.php';
 	$text = $rows['a'];
-	@sendtgtext($text);
+	if(!empty($text)){
+		@sendtgtext($text);
+	}
 }
 elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
-	$yiyanfilename = './yiyandata.dat';
+	$yiyanfilename = 'plugins/yiyandata.dat';
 	if(!file_exists($yiyanfilename)){
 		die;
 	}
@@ -79,7 +80,13 @@ elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
 }
 elseif($msg == "/info" || $msg == "/info{$botname}"){
 	$time_info = date("Y-m-d H:i:s",$chat_date);
-	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}";
+	if($username == $administrator){
+		$info_admin = 'true';
+	}
+	else{
+		$info_admin = 'false';
+	}
+	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tis bot admin:{$info_admin}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}";
 	@sendtgtext($text);
 }
 elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$botname}"){
@@ -100,10 +107,19 @@ elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
 	$text = "{$http_body}/images/{$file}";
 	@sendtgdocument($text);
 }
-elseif($from_id == $chat_id){
-	//私聊智能聊天
-	include_once './sqldic.php';
-	$text = $rows['a'];
+elseif($var0 == '/dic' && $username == $administrator){
+	//群聊智能聊天
+	include_once 'plugins/sqldic.php';
+	$re1 = $rows['a'];
+	$text = "增加成功！\nQ：{$var1}\nA：{$re1}";
 	@sendtgtext($text);
+}
+elseif($from_id == $chat_id){
+	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡
+	include_once 'plugins/sqldic.php';
+	$text = $rows['a'];
+	if(!empty($text)){
+		@sendtgtext($text);
+	}
 }
 ?>

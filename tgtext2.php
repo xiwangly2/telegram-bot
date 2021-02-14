@@ -1,6 +1,6 @@
 <?php
 if($msg == "菜單" || $msg == "/菜單"){
-	$text = @file_get_contents('./menu2.txt');
+	$text = @file_get_contents('menu2.txt');
 	@sendtgtext($text);
 }
 elseif(preg_match('/複讀/i',"{$msg}")){
