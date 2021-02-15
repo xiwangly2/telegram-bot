@@ -46,6 +46,8 @@ if($debug == '1'){
 //读取开关状态
 $switch = @file_get_contents('switch.txt');
 include 'tgtext.php';
-//開啟繁體（測試中）
-//include 'tgtext2.php';
+if($debug == '1'){
+	//開啟繁體（測試中）
+	include 'tgtext2.php';
+}
 ?>

@@ -1,7 +1,7 @@
 <?php
 if($msg == "菜單" || $msg == "/菜單"){
-	$text = @file_get_contents('menu2.txt');
-	@sendtgtext($text);
+	$menu = preg_split("/(language.+)/",@file_get_contents('menu.txt'));
+	@sendtgtext($menu[2]);
 }
 elseif(preg_match('/複讀/i',"{$msg}")){
 	$text = substr($msg,7);

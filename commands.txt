@@ -1,3 +1,4 @@
+language:zh-cn
 start - 开始
 help - 帮助
 loli - 来份萝莉
@@ -6,4 +7,17 @@ uuid - 生成UUID
 ping - 网络诊断工具
 dwz - 生成短网址
 yiyan - 随机一言
+math - 数学计算
+info - 信息
+
+language:zh-tw
+start - 開始
+help - 幫助
+loli - 來份蘿莉
+lolifile -來份蘿莉（文件）
+uuid - 生成UUID
+ping - 網絡診斷工具
+dwz - 生成短網址
+yiyan - 隨機一言
+math - 數學計算
 info - 信息

@@ -29,7 +29,8 @@ elseif($msg == "/off" && $username == $administrator){
 	@sendtgtext('Bot is disabled.');
 }
 elseif($msg == "菜单" || $msg == "/菜单" || $msg == "help" || $msg == "/help" || $msg == "/help{$botname}"){
-	@sendtgtext(@file_get_contents('menu.txt'));
+	$menu = preg_split("/(language.+)/",@file_get_contents('menu.txt'));
+	@sendtgtext($menu[1]);
 }
 elseif($msg == "/start" || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
@@ -150,6 +151,11 @@ elseif($var0 == '/math' && $var1 != ''){
 	$m = $var1;
 	include_once 'plugins/math.php';
 	@sendtgtext($text);
+}
+elseif($msg == "/math" || $msg == "/math{$botname}"){
+	//math
+	@sendtgtext('math <x*> <y*> <z*> <m>');
+	@sendtgtext('For help,please check https://github.com/xiwangly2/math-API/blob/master/README.md');
 }
 elseif($from_id == $chat_id){
 	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡
