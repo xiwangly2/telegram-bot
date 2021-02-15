@@ -5,6 +5,7 @@ ping.php用于ping功能，见[xiwangly_ping](https://github.com/xiwangly2/xiwan
 
 sqldic.php用于使用数据库的自定义词库，见[sqldic]()
 
+math.php用于数学计算，见[math-API](https://github.com/xiwangly2/math-API)
 
 未分离的：
 
