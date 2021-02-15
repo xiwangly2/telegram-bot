@@ -86,7 +86,7 @@ elseif($msg == "/info" || $msg == "/info{$botname}"){
 	else{
 		$info_admin = 'false';
 	}
-	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tis bot admin:{$info_admin}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}";
+	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tis bot admin:{$info_admin}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}\ndebug:{$debug}";
 	@sendtgtext($text);
 }
 elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$botname}"){
@@ -107,11 +107,48 @@ elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
 	$text = "{$http_body}/images/{$file}";
 	@sendtgdocument($text);
 }
-elseif($var0 == '/dic' && $username == $administrator){
+elseif($var0 == '/dic' && $username == $administrator && $var2 != ''){
 	//群聊智能聊天
 	include_once 'plugins/sqldic.php';
 	$re1 = $rows['a'];
 	$text = "增加成功！\nQ：{$var1}\nA：{$re1}";
+	@sendtgtext($text);
+}
+elseif($msg == "/reset" || $msg == "/reset{$botname}"){
+	if($username == $administrator){
+		@sendtgtext('The robot is about to reset.');
+		@unlink('webhook.lck');
+		@sendtgtext('The robot has been reset.');
+	}
+}
+elseif($var0 == '/math' && $var4 != ''){
+	//math
+	$x = $var1;
+	$y = $var2;
+	$z = $var3;
+	$m = $var4;
+	include_once 'plugins/math.php';
+	@sendtgtext($text);
+}
+elseif($var0 == '/math' && $var3 != ''){
+	//math
+	$x = $var1;
+	$y = $var2;
+	$m = $var3;
+	include_once 'plugins/math.php';
+	@sendtgtext($text);
+}
+elseif($var0 == '/math' && $var2 != ''){
+	//math
+	$x = $var1;
+	$m = $var2;
+	include_once 'plugins/math.php';
+	@sendtgtext($text);
+}
+elseif($var0 == '/math' && $var1 != ''){
+	//math
+	$m = $var1;
+	include_once 'plugins/math.php';
 	@sendtgtext($text);
 }
 elseif($from_id == $chat_id){
