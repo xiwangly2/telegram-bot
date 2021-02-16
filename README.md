@@ -38,7 +38,7 @@ $sqlusername = '数据库用户名';//
 $password = '数据库密码';//
 $dbname = '数据库名';//
 $tablename = '数据库表名';//
-$debug = '0';//填1开启调试和消息记录，仅用于开发测试环境
+$debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测试环境
 ```
 
 **`config.php`为必填项，完成后请访问`webhook.php`完成网络挂钩**
