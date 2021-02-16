@@ -1,14 +1,14 @@
 <?php
-function sendtgtext($text){
+function sendtgtext($text,$parse_mode = ''){
 	//发送文本消息
 	global $connectroot,$chat_id,$getdatamax;
 	$text = @rawurlencode($text);
-	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}";
+	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}";
 	if(strlen($url) <= $getdatamax){
 		getHttps($url);
 	}
 	else{
-		post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}");
+		post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}");
 	}
 }
 function sendtgphoto($text){

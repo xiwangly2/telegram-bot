@@ -35,6 +35,14 @@ elseif($msg == "菜单" || $msg == "/菜单" || $msg == "help" || $msg == "/help
 elseif($msg == "/start" || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
 }
+elseif(preg_match('/复读 m/i',"{$msg}") && $username == $administrator){
+	$text = substr($msg,9);
+	@sendtgtext($text,'MarkdownV2');
+}
+elseif(preg_match('/复读 h/i',"{$msg}") && $username == $administrator){
+	$text = substr($msg,9);
+	@sendtgtext($text,'HTML');
+}
 elseif(preg_match('/复读/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,7);
 	@sendtgtext($text);
@@ -156,6 +164,10 @@ elseif($msg == "/math" || $msg == "/math{$botname}"){
 	//math
 	@sendtgtext('math <x*> <y*> <z*> <m>');
 	@sendtgtext('For help,please check https://github.com/xiwangly2/math-API/blob/master/README.md');
+}
+elseif($var0 == '/转发'){
+	//转发消息
+	@forwardmessage($message_id);
 }
 elseif($from_id == $chat_id){
 	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡

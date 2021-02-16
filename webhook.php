@@ -13,6 +13,6 @@ $url = "{$connectroot}deleteWebhook";
 getHttps($url,0);
 //sethook
 $url = "{$connectroot}setWebhook?url={$hookurl}";
-echo(getHttps($url,1));
 @file_put_contents('webhook.lck','true');
+echo(getHttps($url,1));
 ?>

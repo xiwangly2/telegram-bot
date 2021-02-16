@@ -1,4 +1,4 @@
-language:zh-cn
+language:zh-CN
 start - 开始
 help - 帮助
 loli - 来份萝莉
@@ -10,7 +10,7 @@ yiyan - 随机一言
 math - 数学计算
 info - 信息
 
-language:zh-tw
+language:zh-TW
 start - 開始
 help - 幫助
 loli - 來份蘿莉

@@ -1,9 +1,9 @@
-language:zh-cn
+language:zh-CN
 ********************
 菜单
 ping <ip>
 来份萝莉
-复读<msg>(admin)
+复读 <format*> <msg>(admin)
 start - 开始
 help - 帮助
 loli - 来份萝莉
@@ -19,12 +19,12 @@ math <x*> <y*> <z*> <m> - 数学计算
 （群聊中要加上斜杠，*表示可选）
 ********************
 
-language:zh-tw
+language:zh-TW
 ********************
 菜單
 ping <ip>
 來份蘿莉
-复讀<msg>(admin)
+复讀 <format> <msg>(admin)
 start - 開始
 help - 幫助
 loli - 來份蘿莉

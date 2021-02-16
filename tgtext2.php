@@ -3,7 +3,15 @@ if($msg == "菜單" || $msg == "/菜單"){
 	$menu = preg_split("/(language.+)/",@file_get_contents('menu.txt'));
 	@sendtgtext($menu[2]);
 }
-elseif(preg_match('/複讀/i',"{$msg}")){
+elseif(preg_match('/複讀 m/i',"{$msg}") && $username == $administrator){
+	$text = substr($msg,9);
+	@sendtgtext($text,'MarkdownV2');
+}
+elseif(preg_match('/複讀 h/i',"{$msg}") && $username == $administrator){
+	$text = substr($msg,9);
+	@sendtgtext($text,'HTML');
+}
+elseif(preg_match('/複讀/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,7);
 	@sendtgtext($text);
 }
