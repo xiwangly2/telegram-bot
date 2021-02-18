@@ -610,7 +610,7 @@ elseif($m == 'crypt')
 }
 elseif($m == 'crc32')
 {
-	$text = crc32($x);
+	$text = sprintf('%u',crc32($x));
 }
 elseif($m == 'hebrev'&&$y == '')
 {
