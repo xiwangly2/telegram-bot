@@ -165,10 +165,6 @@ elseif($msg == "/math" || $msg == "/math{$botname}"){
 	@sendtgtext('math <x*> <y*> <z*> <m>');
 	@sendtgtext('For help,please check https://github.com/xiwangly2/math-API/blob/master/README.md');
 }
-elseif($var0 == '/转发'){
-	//转发消息
-	@forwardmessage($message_id);
-}
 elseif($from_id == $chat_id){
 	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡
 	include_once 'plugins/sqldic.php';
