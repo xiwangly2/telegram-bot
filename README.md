@@ -47,7 +47,7 @@ $debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测
 
 备注：(群组中需要加/前缀,注意参数有无空格.有多个机器人且命令冲突时会选择您上次互动的机器人.)<br/>
 images目录或/loli相关功能属于随机图片功能，需要请自行在`../images/`目录添加随机图片<br/>
-您也可以尝试使用本地Bot API服务器，见Telegram官方的[telegram-bot-api](https://github.com/tdlib/telegram-bot-api)
+您也可以尝试使用本地Bot API服务器，而不是`https://api.telegram.org`，见Telegram官方的[telegram-bot-api](https://github.com/tdlib/telegram-bot-api)
 
 更新日志：
 >2021.2.12 增加繁体中文支持(beta)，简化config.php设置，修复错误，优化正则表达式匹配<br/>
