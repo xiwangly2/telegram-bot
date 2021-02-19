@@ -11,7 +11,7 @@ xiwangly的telegram机器人程序:telegram-bot
 
 如有安全需求，请把`config.php`放置在Web文档树之外，并且修改各脚本的相关文件引入
 
-根据Telegram的要求，搭建本项目的webhook必须使用https
+根据Telegram的要求，搭建本项目的webhook必须使用https而不是http
 
 >请联系telegram中的[@BotFather]机器人注册自己的机器人，机器人的多数设置都在这里进行<br/>
 >请勿泄露`$token`，如果已泄露，请联系[@BotFather]机器人更改`$token`<br/>
