@@ -1,5 +1,5 @@
 <?php
-if($msg == "菜單" || $msg == "/菜單"){
+if($msg == '菜單' || $msg == '/菜單'){
 	$menu = preg_split("/(language.+)/",@file_get_contents('menu.txt'));
 	@sendtgtext($menu[2]);
 }
@@ -15,7 +15,7 @@ elseif(preg_match('/複讀/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,7);
 	@sendtgtext($text);
 }
-elseif($msg == "來份蘿莉" || $msg == "/來份蘿莉"){
+elseif($msg == '來份蘿莉' || $msg == '/來份蘿莉'){
 	$dir = '../images/';
 	$list = @scandir($dir,0);
 	$rand = @rand(2,@count($list)-'1');

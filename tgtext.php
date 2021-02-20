@@ -4,7 +4,7 @@
 if(empty($msg) || $is_bot == '1'){
 	die;
 }
-elseif($msg == "/on" && $username == $administrator){
+elseif($msg == '/on' && $username == $administrator){
 		if($switch == 'enabled'){
 		@sendtgtext('Bot is running.');
 	}
@@ -24,15 +24,15 @@ elseif($msg == "/on" && $username == $administrator){
 if(@file_get_contents('switch.txt') == 'disabled'){
 	die;
 }
-elseif($msg == "/off" && $username == $administrator){
+elseif($msg == '/off' && $username == $administrator){
 	@file_put_contents('switch.txt','disabled');
 	@sendtgtext('Bot is disabled.');
 }
-elseif($msg == "菜单" || $msg == "/菜单" || $msg == "help" || $msg == "/help" || $msg == "/help{$botname}"){
-	$menu = preg_split("/(language.+)/",@file_get_contents('menu.txt'));
+elseif($msg == '菜单' || $msg == '/菜单' || $msg == 'help' || $msg == '/help' || $msg == "/help{$botname}"){
+	$menu = preg_split('/(language.+)/',@file_get_contents('menu.txt'));
 	@sendtgtext($menu[1]);
 }
-elseif($msg == "/start" || $msg == "/start{$botname}"){
+elseif($msg == '/start' || $msg == "/start{$botname}"){
 	@sendtgtext('输入 /菜单 试试？');
 }
 elseif(preg_match('/复读 m/i',"{$msg}") && $username == $administrator){
@@ -47,7 +47,7 @@ elseif(preg_match('/复读/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,7);
 	@sendtgtext($text);
 }
-elseif($msg == "/ping" || $msg == "/ping{$botname}"){
+elseif($msg == '/ping' || $msg == "/ping{$botname}"){
 	@sendtgtext('ping <ip>');
 }
 elseif($var0 == '/ping'){
@@ -56,10 +56,10 @@ elseif($var0 == '/ping'){
 	include_once 'plugins/ping.php';
 	@sendtgtext($sc);
 }
-elseif($msg == "/uuid" || $msg == "/uuid{$botname}"){
+elseif($msg == '/uuid' || $msg == "/uuid{$botname}"){
 	@sendtgtext(@uuid());
 }
-elseif($msg == "/dwz" || $msg == "/dwz{$botname}"){
+elseif($msg == '/dwz' || $msg == "/dwz{$botname}"){
 	@sendtgtext('dwz <url>');
 }
 elseif($var0 == '/dwz'){
@@ -76,7 +76,7 @@ elseif($var0 == '/m'){
 		@sendtgtext($text);
 	}
 }
-elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
+elseif($msg == '/yiyan' || $msg == "/yiyan{$botname}"){
 	$yiyanfilename = 'plugins/yiyandata.dat';
 	if(!file_exists($yiyanfilename)){
 		die;
@@ -87,8 +87,8 @@ elseif($msg == "/yiyan" || $msg == "/yiyan{$botname}"){
 	$text = str_replace(array("\r","\n","\r\n"),'',$text);
 	@sendtgtext($text);
 }
-elseif($msg == "/info" || $msg == "/info{$botname}"){
-	$time_info = date("Y-m-d H:i:s",$chat_date);
+elseif($msg == '/info' || $msg == "/info{$botname}"){
+	$time_info = date('Y-m-d H:i:s',$chat_date);
 	if($username == $administrator){
 		$info_admin = 'true';
 	}
@@ -98,7 +98,7 @@ elseif($msg == "/info" || $msg == "/info{$botname}"){
 	$text = "botname:{$botname}\ndate:{$chat_date}\ntime:{$time_info}\nmessage id:{$message_id}\nfrom:\n\tid:{$from_id}\n\tis bot:{$is_bot}\n\tfirst name:{$first_name}\n\tlast name:{$last_name}\n\tusername:{$username}\n\tis bot admin:{$info_admin}\n\tlanguage code:{$language_code}\nchat:\n\tid:{$chat_id}\n\ttitle:{$chat_title}\n\ttype:{$chat_type}\ntext:{$text}\nentities:\n\toffset:{$entities_offset}\n\tlength:{$entities_length}\n\ttype:{$entities_type}\ndebug:{$debug}";
 	@sendtgtext($text);
 }
-elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $msg == "/loli{$botname}"){
+elseif($msg == '来份萝莉' || $msg == '/来份萝莉' || $msg == '/loli' || $msg == "/loli{$botname}"){
 	//可能需要重新指定路径
 	$dir = '../images/';
 	$list = @scandir($dir,0);
@@ -107,7 +107,7 @@ elseif($msg == "来份萝莉" || $msg == "/来份萝莉" || $msg == "/loli" || $
 	$text = "{$http_body}/images/{$file}";
 	@sendtgphoto($text);
 }
-elseif($msg == "/lolifile" || $msg == "/lolifile{$botname}"){
+elseif($msg == '/lolifile' || $msg == "/lolifile{$botname}"){
 	//可能需要重新指定路径
 	$dir = '../images/';
 	$list = @scandir($dir,0);
@@ -123,7 +123,7 @@ elseif($var0 == '/dic' && $username == $administrator && $var2 != ''){
 	$text = "增加成功！\nQ：{$var1}\nA：{$re1}";
 	@sendtgtext($text);
 }
-elseif($msg == "/reset" || $msg == "/reset{$botname}"){
+elseif($msg == '/reset' || $msg == "/reset{$botname}"){
 	if($username == $administrator){
 		@sendtgtext('The robot is about to reset.');
 		@unlink('webhook.lck');
@@ -160,10 +160,24 @@ elseif($var0 == '/math' && $var1 != ''){
 	include_once 'plugins/math.php';
 	@sendtgtext($text);
 }
-elseif($msg == "/math" || $msg == "/math{$botname}"){
+elseif($msg == '/math' || $msg == "/math{$botname}"){
 	//math
 	@sendtgtext('math <x*> <y*> <z*> <m>');
-	@sendtgtext('For help,please check https://github.com/xiwangly2/math-API/blob/master/README.md');
+	@sendtgtext('For help,please read https://github.com/xiwangly2/math-API/blob/master/README.md');
+}
+elseif($var0 == '/xuid' && $var1 != ''){
+	//查询xbox xuid，多用于Minecraft多人联机权限管理
+	$xuid_data = json_decode(@getHttps('https://playerdb.co/api/player/xbox/'.$var1),true);
+	$text = $xuid_data['data']['player']['id'];
+	@sendtgtext("id:{$var1}\nxuid:{$text}");
+}
+elseif($msg == '/xuid' || $msg == "/xuid{$botname}"){
+	//xuid
+	@sendtgtext('xuid <id>');
+}
+elseif($var0 == '/fileupload' && $username == $administrator){
+	//@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
+	@fileupload($var1,$var2);
 }
 elseif($from_id == $chat_id){
 	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡

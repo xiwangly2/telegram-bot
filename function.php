@@ -2,37 +2,44 @@
 function sendtgtext($text,$parse_mode = ''){
 	//发送文本消息
 	global $connectroot,$chat_id,$getdatamax;
-	$text = @rawurlencode($text);
-	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}";
 	if(strlen($url) <= $getdatamax){
+		$text = @rawurlencode($text);
+		$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}";
 		getHttps($url);
 	}
 	else{
-		post("{$connectroot}sendmessage","chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}");
+		$postdata['chat_id'] = $chat_id;
+		$postdata['text'] = $text;
+		$postdata['parse_mode'] = $parse_mode;
+		post("{$connectroot}sendmessage",$postdata);
 	}
 }
 function sendtgphoto($text){
 	//发送图片消息
 	global $connectroot,$chat_id,$getdatamax;
-	$text = @rawurlencode($text);
-	$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
 	if(strlen($url) <= $getdatamax){
+		$text = @rawurlencode($text);
+		$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
 		getHttps($url);
 	}
 	else{
-		post("{$connectroot}sendphoto","chat_id={$chat_id}&photo={$text}");
+		$postdata['chat_id'] = $chat_id;
+		$postdata['photo'] = $text;
+		post("{$connectroot}sendphoto",$postdata);
 	}
 }
 function sendtgdocument($text){
 	//发送文档消息
 	global $connectroot,$chat_id,$getdatamax;
-	$text = @rawurlencode($text);
-	$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
 	if(strlen($url) <= $getdatamax){
+		$text = @rawurlencode($text);
+		$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
 		getHttps($url);
 	}
 	else{
-		post("{$connectroot}senddocument","chat_id={$chat_id}&document={$text}");
+		$postdata['chat_id'] = $chat_id;
+		$postdata['document'] = $text;
+		post("{$connectroot}senddocument",$postdata);
 	}
 }
 function getHttps($url,$isoutput = 1){
@@ -50,24 +57,23 @@ function getHttps($url,$isoutput = 1){
 	//执行并获取HTML文档内容
 	if($isoutput == 1 || $isoutput == true)
 	{
+		curl_close($ch);
 		return $output;//输出回调
 	}
 	elseif($isoutput == 2)
 	{
+		curl_close($ch);
 		@file_put_contents('curldata.txt');//写入文件
 	}
 	//$isoutput为0或其他则仅访问不输出
-	//$str = htmlspecialchars($output);
-	//释放curl句柄
-	curl_close($ch);
 }
-function post($url,$post_string = ''){
+function post($url,$post_string = null){
 	//POST请求
 	$ch = curl_init();
 	curl_setopt($ch,CURLOPT_URL,$url);
 	curl_setopt($ch,CURLOPT_POSTFIELDS,$post_string);
 	curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_USERAGENT,"xiwangly CURL Example beta");
+	//curl_setopt($ch, CURLOPT_USERAGENT,"xiwangly CURL Example beta");
 	$data = curl_exec($ch);
 	curl_close($ch);
 	return $data;
@@ -88,4 +94,16 @@ function pre($msg){
 		global $$c;
 		$$c = $array[$i];
 	}
+}
+function fileupload($file_url,$post_name = null,$file_type = 'document'){
+	//上传文件
+	global $connectroot,$chat_id;
+	if($post_name == null){
+		$post_url = parse_url($file_url);
+		$post_name = @basename($post_url['path']);
+	}
+	$post_data = [$file_type => new CURLFile($file_url,null,$post_name)];
+	//$post_data[$file_type] -> length = @filesize($file1);
+	$post_data['chat_id'] = $chat_id;
+	@post("{$connectroot}send{$file_type}",$post_data);
 }
