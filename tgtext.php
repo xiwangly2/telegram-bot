@@ -179,12 +179,4 @@ elseif($var0 == '/fileupload' && $username == $administrator){
 	//@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
 	@fileupload($var1,$var2);
 }
-elseif($from_id == $chat_id){
-	//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡
-	include_once 'plugins/sqldic.php';
-	$text = $rows['a'];
-	if(!empty($text)){
-		@sendtgtext($text);
-	}
-}
 ?>
