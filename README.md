@@ -43,14 +43,14 @@ $tablename = '数据库表名';//
 $debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测试环境
 ```
 示例：<br/>
-```
+```php
 $token = '1580564475:AAEmbG-OdOnQSzd9YOU6FumQhP7mWTNcS2E';//我的token是1580564475:AAEmbG-OdOnQSzd9YOU6FumQhP7mWTNcS2E（我在填完此内容时已经废除了此token，token的格式一般是机器人id:字符串）
 $connectroot = "https://api.telegram.org/bot{$token}/";//我要使用Telegram的Bot API
 $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';//我选择自动选择协议
 $http_host = $_SERVER['HTTP_HOST'];//我使用服务器定义的host，端口是默认
 $http_body = "{$http_type}{$http_host}";//我不需要自定义url的body部分
 $branch = 'telegram-bot';//我存储这个项目的文件夹是telegram-bot
-$hookurl = "{$http_body}/{$branch}/index.php";//定位这个目录中的index.php
+$hookurl = "{$http_body}/{$branch}/index.php";//我的这个项目的index文件是{$http_body}/{$branch}/index.php
 $botname = '@xwly_bot';//我的机器人用户名是@xwly_bot（telegram强制要求机器人用户名以_bot结尾）
 $administrator = 'xiwangly';//超级管理员（主人）的用户名是xiwangly
 $administrator_id = '1367850918';//超级管理员（主人）的id是1367850918
