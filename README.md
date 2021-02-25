@@ -4,12 +4,14 @@ xiwangly的telegram机器人程序:telegram-bot
 [@BotFather]:https://t.me/BotFather
 
 **说在前面**
+-----
 
 对于中国大陆用户：使用此脚本需要能访问国际网络的服务器或虚拟主机，可以尝试使用ping命令判断连通性：`ping -c 3 api.telegram.org`
 
 支持的语言：zh-CN，zh-TW（测试中）（作者语言能力有限，有翻译错误请指出）
 
 **使用方法**
+-----
 
 建议：下载后请把文件夹重命名为`telegram-bot`或其他，不建议保留分支名称。php版本建议>=7.2
 
