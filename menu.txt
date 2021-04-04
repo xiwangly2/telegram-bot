@@ -17,6 +17,8 @@ dic <q> <a> - 增加dic(admin)
 math <x*> <y*> <z*> <m> - 数学计算
 xuid <id> - 查询xuid
 fileupload <url> <name*> - 文件上传(admin)
+签到
+gold <user(objects)> <number> - 增加金币
 ********************
 （命令开头要加上斜杠，*表示可选）
 ********************
@@ -40,6 +42,8 @@ dic <q> <a> - 增加dic(admin)
 math <x*> <y*> <z*> <m> - 數學計算
 xuid <id> - 查詢xuid
 fileupload <url> <name*> - 文件上傳(admin)
+簽到
+gold <user(objects)> <number> - 增加金幣
 ********************
 （命令開頭要加上斜杠，*表示可選）
 ********************

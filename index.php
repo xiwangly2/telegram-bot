@@ -25,10 +25,19 @@ $chat_title = $update['message']['chat']['title'];
 $chat_type = $update['message']['chat']['type'];
 $chat_date = $update['message']['date'];
 //message entities
-$entities_type = $update['message']['entities']['0']['type'];
-if(!empty($entities_type)){
+if(!empty($update['message']['entities']['0'])){
 	$entities_offset = $update['message']['entities']['0']['offset'];
 	$entities_length = $update['message']['entities']['0']['length'];
+	$entities_type = $update['message']['entities']['0']['type'];
+}
+if(!empty($update['message']['entities']['1'])){
+	$entities1_offset = $update['message']['entities']['1']['offset'];
+	$entities1_length = $update['message']['entities']['1']['length'];
+	$entities1_type = $update['message']['entities']['1']['type'];
+	$entities1_user_id = $update['message']['entities']['1']['user']['id'];
+	$entities1_user_is_bot = $update['message']['entities']['1']['user']['is_bot'];
+	$entities1_user_first_name = $update['message']['entities']['1']['user']['first_name'];
+	$entities1_user_language_code = $update['message']['entities']['1']['user']['language_code'];
 }
 //debug
 if($debug == '1'){
@@ -51,6 +60,7 @@ if($debug == '1'){
 	include 'tgtext2.php';
 	if($from_id == $chat_id){
 		//私聊智能聊天，这个必须放在最后，否则前面的私聊消息会被遮挡
+		unset($var2);
 		include_once 'plugins/sqldic.php';
 		$text = $rows['a'];
 		if(!empty($text)){

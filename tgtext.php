@@ -33,7 +33,7 @@ elseif($msg == '菜单' || $msg == '/菜单' || $msg == 'help' || $msg == '/help
 	@sendtgtext($menu[1]);
 }
 elseif($msg == '/start' || $msg == "/start{$botname}"){
-	@sendtgtext('输入 /菜单 试试？');
+	@sendtgtext('输入 /help 试试？');
 }
 elseif(preg_match('/复读 m/i',"{$msg}") && $username == $administrator){
 	$text = substr($msg,9);
@@ -176,7 +176,34 @@ elseif($msg == '/xuid' || $msg == "/xuid{$botname}"){
 	@sendtgtext('xuid <id>');
 }
 elseif($var0 == '/fileupload' && $username == $administrator){
-	//@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
+	if($debug == '1'){
+		@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
+	}
 	@fileupload($var1,$var2);
+}
+elseif($var0 == '/签到' || $msg == "/签到{$botname}" || $var0 == '/check_in' || $msg == "/check_in{$botname}"){
+	$var1 = $from_id;
+	include 'plugins/check_in.php';
+	if(date('d',$rows_date) != date('d',time())){
+		include 'plugins/gold.php';
+		$var2 = $rows_number + mt_rand(8,64);
+		include 'plugins/gold.php';
+		$date = time();
+		include 'plugins/check_in.php';
+		@sendtgtext("Success!Gold coins increased by {$var2}.");
+	}
+	else{
+		@sendtgtext('Checked in today.');
+	}
+}
+elseif($var0 == '/gold' && $username == $administrator && $var2 != '' && $entities1_user_id != ''){
+	$var1 = $entities1_user_id;
+	$var3 = $var2;
+	unset($var2);
+	include 'plugins/gold.php';
+	$var2 = $rows_number + $var3;
+	include 'plugins/gold.php';
+	@sendtgtext("Success!Gold coins increased by {$var2}.");
+	@sendtgtext($rows_number);
 }
 ?>

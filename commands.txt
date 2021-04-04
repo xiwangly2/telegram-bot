@@ -10,6 +10,7 @@ yiyan - 随机一言
 math - 数学计算
 xuid - 查询xuid
 info - 信息
+check_in - 签到
 
 language:zh-TW
 start - 開始
@@ -23,3 +24,4 @@ yiyan - 隨機一言
 math - 數學計算
 xuid - 查詢xuid
 info - 信息
+check_in - 簽到

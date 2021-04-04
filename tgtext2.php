@@ -23,4 +23,19 @@ elseif($msg == '來份蘿莉' || $msg == '/來份蘿莉'){
 	$text = "{$http_body}/images/{$file}";
 	@sendtgphoto($text);
 }
+elseif($var0 == '/簽到' || $msg == "/簽到{$botname}"){
+	$var1 = $from_id;
+	include 'plugins/check_in.php';
+	if(date('d',$rows_date) != date('d',time())){
+		include 'plugins/gold.php';
+		$var2 = $rows_number + mt_rand(8,64);
+		include 'plugins/gold.php';
+		$date = time();
+		include 'plugins/check_in.php';
+		@sendtgtext("Success!Gold coins increased by {$var2}.");
+	}
+	else{
+		@sendtgtext('Checked in today.');
+	}
+}
 ?>
