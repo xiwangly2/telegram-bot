@@ -75,10 +75,10 @@ $debug = '1';//我想要开启调试
 images目录或/loli相关功能属于随机图片功能，需要请自行在`../images/`目录添加随机图片<br/>
 您也可以尝试使用本地Bot API服务器，而不是`https://api.telegram.org`，见Telegram官方的[telegram-bot-api](https://github.com/tdlib/telegram-bot-api)
 
-更新日志：
->2021.2.12 增加繁体中文支持(beta)，简化config.php设置，修复错误，优化正则表达式匹配<br/>
->2021.2.4 增加对GitHub webhook的消息推送支持(beta)，优化代码使之更易于开发者自定义，修复了一些bug<br/>
->2021.4.4 增加金币及签到等功能，修复了私聊错误触发的bug，细节优化<br/>
+更新日志：<br/>
+- 2021.4.4 增加金币及签到等功能，修复了私聊错误触发的bug，细节优化<br/>
+- 2021.2.4 增加对GitHub webhook的消息推送支持(beta)，优化代码使之更易于开发者自定义，修复了一些bug<br/>
+- 2021.2.12 增加繁体中文支持(beta)，简化config.php设置，修复错误，优化正则表达式匹配<br/>
 
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
