@@ -77,7 +77,8 @@ images目录或/loli相关功能属于随机图片功能，需要请自行在`..
 
 更新日志：
 >2021.2.12 增加繁体中文支持(beta)，简化config.php设置，修复错误，优化正则表达式匹配<br/>
->2021.2.4 增加对GitHub webhook的消息推送支持(beta)，优化代码使之更易于开发者自定义，修复了一些bug
+>2021.2.4 增加对GitHub webhook的消息推送支持(beta)，优化代码使之更易于开发者自定义，修复了一些bug<br/>
+>2021.4.4 增加金币及签到等功能，修复了私聊错误触发的bug，细节优化<br/>
 
 参考：
 * [Bots: An introduction for developers](https://core.telegram.org/bots)
