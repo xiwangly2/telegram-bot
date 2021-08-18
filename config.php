@@ -15,13 +15,13 @@ $botname = '@机器人用户名';
 $administrator = '主人用户名';
 $administrator_id = '主人id';
 $getdatamax = '0';
+$debug = '0';
 //数据库信息
 $host = 'host(:port)';
 $sqlusername = '数据库用户名';
 $password = '数据库密码';
 $dbname = '数据库名';
 $tablename = '数据库表名';
-$debug = '0';
 //可选的Webhook信息
 $certificate = '';
 $ip_address = '';
