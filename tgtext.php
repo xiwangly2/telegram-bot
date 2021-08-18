@@ -175,12 +175,13 @@ elseif($msg == '/xuid' || $msg == "/xuid{$botname}"){
 	//xuid
 	@sendtgtext('xuid <id>');
 }
-elseif($var0 == '/fileupload' && $username == $administrator){
+/*elseif($var0 == '/fileupload' && $username == $administrator){
 	if($debug == '1'){
 		@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
 	}
 	@fileupload($var1,$var2);
 }
+*/
 elseif($var0 == '/签到' || $msg == "/签到{$botname}" || $var0 == '/check_in' || $msg == "/check_in{$botname}"){
 	$var1 = $from_id;
 	include 'plugins/check_in.php';
@@ -205,5 +206,11 @@ elseif($var0 == '/gold' && $username == $administrator && $var2 != '' && $entiti
 	include 'plugins/gold.php';
 	@sendtgtext("Success!Gold coins increased by {$var2}.");
 	@sendtgtext($rows_number);
+}
+elseif($var0 == '/白板'){
+	@sendtgtext('请耐心等待...');
+	$text = substr($msg,7);
+	$text = "https://xiwangly.top/imagettftext/?image=&imageurl=&r=&g=&b=&size=&i=&x=&y=&font=&text={$text}";
+	@fileupload($text,null,'photo');
 }
 ?>

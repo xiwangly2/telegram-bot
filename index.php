@@ -1,5 +1,12 @@
 <?php
 include_once 'config.php';
+if($debug == '1'){
+	error_reporting(E_ALL);
+}
+else{
+	@error_reporting(0);
+	@ini_set('display_errors',0);
+}
 include_once 'function.php';
 //获取反射信息
 $php_input = @file_get_contents('php://input');
