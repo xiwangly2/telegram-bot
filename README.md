@@ -43,12 +43,20 @@ $botname = '@机器人用户名';//
 $administrator = '主人用户名';//用于机器功能管理
 $administrator_id = '主人id';//用于向主人发送消息，这个id就是from_id，可使用自带命令'/info'查看id，不要填错，推荐用于私聊消息推送
 $getdatamax = '2083';//设置允许容纳GET方式发送的数据包最大大小（单位B），设置为0则始终采用POST方法发送数据
+$debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测试环境
+//数据库信息
 $host = 'host(:port)';//数据库的host地址和端口，若端口默认为3306则可省略输入port
 $sqlusername = '数据库用户名';//
 $password = '数据库密码';//
 $dbname = '数据库名';//
 $tablename = '数据库表名';//
-$debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测试环境
+//可选的Webhook信息
+$certificate = '';//网站的根证书
+$ip_address = '';//发送请求的固定IP地址
+$max_connections = '40';//最大允许同时HTTPS连接数，范围1-100，使用较低的值来限制机器人服务器上的负载
+$allowed_updates = '';//希望接收更新类型的JSON列表，数组格式
+$drop_pending_updates = 'false';//填True删除所有挂起的更新
+
 ```
 示例：<br/>
 ```php
@@ -63,12 +71,19 @@ $botname = '@xwly_bot';//我的机器人用户名是@xwly_bot（telegram强制�
 $administrator = 'xiwangly';//超级管理员（主人）的用户名是xiwangly
 $administrator_id = '1367850918';//超级管理员（主人）的id是1367850918
 $getdatamax = '0';//我始终使用post方法发送消息，填写0
+$debug = '1';//我想要开启调试
+//数据库信息
 $host = 'localhost';//我的数据库的host是localhost
 $sqlusername = 'dic';//我的数据库的用户名是dic
 $password = '********';//我的数据库的密码是********
 $dbname = 'dic';//我的数据库的数据库名是dic
 $tablename = 'dic';//我的数据库的表名是dic
-$debug = '1';//我想要开启调试
+//可选的Webhook信息
+$certificate = './cert.cer';//我的网站的根证书地址在./cert.cer
+$ip_address = '';//我需要使用固定IP地址59.24.3.174发送请求
+$max_connections = '100';//我想要机器人最大的吞吐量
+$allowed_updates = '[“message”、“edited_channel_post”、“callback_query”]';//我希望接收[“message”、“edited_channel_post”、“callback_query”]的JSON更新类型
+$drop_pending_updates = 'true';//我希望删除所有挂起的更新
 ```
 
 **`config.php`为必填项，完成后请访问`webhook.php`完成网络挂钩**
