@@ -43,7 +43,8 @@ $botname = '@机器人用户名';//
 $administrator = '主人用户名';//用于机器功能管理
 $administrator_id = '主人id';//用于向主人发送消息，这个id就是from_id，可使用自带命令'/info'查看id，不要填错，推荐用于私聊消息推送
 $getdatamax = '2083';//设置允许容纳GET方式发送的数据包最大大小（单位B），设置为0则始终采用POST方法发送数据
-$debug = '0';//填1开启调试，消息记录和beta功能，多用于开发测试环境
+$debug = '0';//填1开启调试和消息记录，用于开发测试环境
+$beta = '1';填1开启测试（beta）功能
 //数据库信息
 $host = 'host(:port)';//数据库的host地址和端口，若端口默认为3306则可省略输入port
 $sqlusername = '数据库用户名';//
@@ -72,6 +73,7 @@ $administrator = 'xiwangly';//超级管理员（主人）的用户名是xiwangly
 $administrator_id = '1367850918';//超级管理员（主人）的id是1367850918
 $getdatamax = '0';//我始终使用post方法发送消息，填写0
 $debug = '1';//我想要开启调试
+$beta = '1';我想要开启开启测试（beta）功能
 //数据库信息
 $host = 'localhost';//我的数据库的host是localhost
 $sqlusername = 'dic';//我的数据库的用户名是dic
