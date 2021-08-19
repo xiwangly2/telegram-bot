@@ -16,6 +16,7 @@ $administrator = '主人用户名';
 $administrator_id = '主人id';
 $getdatamax = '0';
 $debug = '0';
+$beta = '1';
 //数据库信息
 $host = 'host(:port)';
 $sqlusername = '数据库用户名';
