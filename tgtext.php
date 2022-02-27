@@ -53,6 +53,7 @@ elseif($msg == '/ping' || $msg == "/ping{$botname}"){
 elseif($var0 == '/ping'){
 	@sendtgtext('请耐心等待...');
 	$ip = $var1;
+	$ip = '\''.str_replace('\'','',$ip).'\'';
 	include_once 'plugins/ping.php';
 	@sendtgtext($sc);
 }
@@ -175,13 +176,14 @@ elseif($msg == '/xuid' || $msg == "/xuid{$botname}"){
 	//xuid
 	@sendtgtext('xuid <id>');
 }
-/*elseif($var0 == '/fileupload' && $username == $administrator){
-	if($debug == '1'){
-		@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
+elseif($var0 == '/fileupload' && $username == $administrator){
+	if($beta == '1'){
+		if($debug == '1'){
+			@sendtgtext("file:{$var1}\nfile_name:{$var2}\nfile_type:{$var3}");
+		}
+		@fileupload($var1,$var2,'document');
 	}
-	@fileupload($var1,$var2);
 }
-*/
 elseif($var0 == '/签到' || $msg == "/签到{$botname}" || $var0 == '/check_in' || $msg == "/check_in{$botname}"){
 	$var1 = $from_id;
 	include 'plugins/check_in.php';
@@ -212,5 +214,17 @@ elseif($var0 == '/白板'){
 	$text = substr($msg,7);
 	$text = "https://xiwangly.top/imagettftext/?image=&imageurl=&r=&g=&b=&size=&i=&x=&y=&font=&text={$text}";
 	@fileupload($text,null,'photo');
+}
+elseif($var0 == '/get' && $username == $administrator){
+	if($beta == '1'){
+		$text = @getHttps($var1,1,null,null,null,'Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Mobile Safari/537.36','V4');
+		@sendtgtext($text);
+	}
+}
+elseif(($var0 == '/post' || $var0 == '/curl') && $username == $administrator){
+	if($beta == '1'){
+		$text = @post($var1,$var2,null,null,null,'Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Mobile Safari/537.36','V4');
+		@sendtgtext($text);
+	}
 }
 ?>
