@@ -2,10 +2,10 @@
 function sendtgtext($text,$parse_mode = ''){
 	//发送文本消息
 	global $connectroot,$chat_id,$getdatamax;
+	$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}";
 	if(strlen($url) <= $getdatamax){
 		$text = @rawurlencode($text);
-		$url = "{$connectroot}sendmessage?chat_id={$chat_id}&text={$text}&parse_mode={$parse_mode}";
-		getHttps($url);
+		getHttps($url,1);
 	}
 	else{
 		$postdata['chat_id'] = $chat_id;
@@ -17,9 +17,9 @@ function sendtgtext($text,$parse_mode = ''){
 function sendtgphoto($text){
 	//发送图片消息
 	global $connectroot,$chat_id,$getdatamax;
+	$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
 	if(strlen($url) <= $getdatamax){
 		$text = @rawurlencode($text);
-		$url = "{$connectroot}sendphoto?chat_id={$chat_id}&photo={$text}";
 		getHttps($url);
 	}
 	else{
@@ -31,9 +31,9 @@ function sendtgphoto($text){
 function sendtgdocument($text){
 	//发送文档消息
 	global $connectroot,$chat_id,$getdatamax;
+	$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
 	if(strlen($url) <= $getdatamax){
 		$text = @rawurlencode($text);
-		$url = "{$connectroot}senddocument?chat_id={$chat_id}&document={$text}";
 		getHttps($url);
 	}
 	else{
