@@ -66,7 +66,7 @@ $connectroot = "https://api.telegram.org/bot{$token}/";//我要使用Telegram的
 $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';//我选择自动选择协议
 $http_host = $_SERVER['HTTP_HOST'];//我使用服务器定义的host，端口是默认
 $http_body = "{$http_type}{$http_host}";//我不需要自定义url的body部分
-$branch = 'telegram-bot';//我存储这个项目的文件夹是telegram-bot
+$branch = 'telegram-bot';//我存储这个项目的文件夹是telegram-bot，出于安全起见，建议采用较为复杂的字符组合命名文件夹
 $hookurl = "{$http_body}/{$branch}/index.php";//我的这个项目的index文件是{$http_body}/{$branch}/index.php
 $botname = '@xwly_bot';//我的机器人用户名是@xwly_bot（telegram强制要求机器人用户名以_bot结尾）
 $administrator = 'xiwangly';//超级管理员（主人）的用户名是xiwangly
